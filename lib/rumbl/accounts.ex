@@ -1,6 +1,6 @@
 defmodule Rumbl.Accounts do 
-  alias Rumbl.Accounts.User
   alias Rumbl.Repo
+  alias Rumbl.Accounts.User
 
   def list_users, do:
     Repo.all(User)
@@ -13,4 +13,15 @@ defmodule Rumbl.Accounts do
   
   def get_user_by(params), do:
     Repo.get_by(User, params)
+
+  # book q: why define this first before it's seemingly needed?
+  def change_user(%User{} = user) do
+    User.changeset(user, %{})
+  end
+
+  def create_user(attrs \\ %{}) do
+    %User{}
+    |> User.changeset(attrs)
+    |> Repo.insert()
+  end
 end
