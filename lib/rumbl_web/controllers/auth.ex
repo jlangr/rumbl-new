@@ -18,4 +18,7 @@ defmodule RumblWeb.Auth do
       # with a different identifier, in case an attacker knew, by any chance, the previous one.
   end
 
+  def logout(conn) do
+    configure_session(conn, drop: true)
+  end
 end
