@@ -1,8 +1,8 @@
-defmodule Rumbl.Question do
+defmodule Quizzy.Question do
   defstruct text: "", answers: [], answer: nil
 
   def new(text), do:
-    %Rumbl.Question{text: text}
+    %Quizzy.Question{text: text}
 
   def add_answer(question, answer, is_correct? \\ false), do:
     Map.update(question, :answers, [],

@@ -1,6 +1,6 @@
-defmodule Rumbl.QuestionTest do
+defmodule Quizzy.QuestionTest do
   use ExUnit.Case
-  import Rumbl.Question
+  import Quizzy.Question
 
   test "create from question text" do
     question = new("Why?")
@@ -52,8 +52,6 @@ defmodule Rumbl.QuestionTest do
              %{text: "Dunno", correct: false, index: 1}
            ]
   end
-
-  # ? nest tests
 
   test "updates correct answer when set" do
     question = new("Why?")
