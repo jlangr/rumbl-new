@@ -25,7 +25,7 @@ defmodule Quizzy.QuestionTest do
   test "adds correct answer" do
     question = new("Why?")
 
-               |> add_correct_answer("Because")
+    |> add_correct_answer("Because")
 
     assert question.answers == [%{text: "Because", correct: true, index: 0}]
   end
@@ -33,7 +33,7 @@ defmodule Quizzy.QuestionTest do
   test "adds multiple answers" do
     question = new("Why?")
 
-               |> add_answers(["Because", "Dunno"])
+    |> add_answers(["Because", "Dunno"])
 
     assert question.answers == [
              %{text: "Because", correct: false, index: 0},
@@ -45,7 +45,7 @@ defmodule Quizzy.QuestionTest do
     question = new("Why?")
                |> add_answers(["Because", "Dunno"])
 
-               |> set_correct_answer(0)
+    |> set_correct_answer(0)
 
     assert question.answers == [
              %{text: "Because", correct: true, index: 0},
@@ -58,7 +58,7 @@ defmodule Quizzy.QuestionTest do
                |> add_answers(["A", "B", "C"])
                |> set_correct_answer(2)
 
-               |> set_correct_answer(0)
+    |> set_correct_answer(0)
 
     assert question.answers == [
              %{text: "A", correct: true, index: 0},
@@ -72,7 +72,7 @@ defmodule Quizzy.QuestionTest do
       question = new("Why?")
                  |> add_answers(["A", "B", "C", "D"])
 
-                 |> move(3, 0)
+      |> move(3, 0)
 
       assert question.answers == [
                %{text: "D", correct: false, index: 0},
@@ -86,7 +86,7 @@ defmodule Quizzy.QuestionTest do
       question = new("Why?")
                  |> add_answers(["A", "B", "C", "D"])
 
-                 |> move(0, 3)
+      |> move(0, 3)
 
       assert question.answers == [
                %{text: "B", correct: false, index: 0},
@@ -100,7 +100,7 @@ defmodule Quizzy.QuestionTest do
       question = new("Why?")
                  |> add_answers(["A", "B", "C", "D"])
 
-                 |> move(0, 4)
+      |> move(0, 4)
 
       assert question.answers == [
                %{text: "B", correct: false, index: 0},
