@@ -109,5 +109,8 @@ defmodule Quizzy.QuestionTest do
                %{text: "A", correct: false, index: 3},
              ]
     end
+
+    # TODO is question playable--does it have 4 answers,
+    #  is one marked correct
   end
 end
