@@ -4,13 +4,13 @@ defmodule Quizzy.Game do
   def new(quiz), do:
     %Quizzy.Game{quiz: quiz, remaining_questions: quiz.questions}
 
-  def add_player(game, player) do
+  def add_player(game, player), do:
     Map.update(game, :players, [], &([player | &1]))
-  end
 
   def next_question(game) do
     [next_question | remaining_questions] = game.remaining_questions
-    put_in(game.current_question, Map.put(next_question, :state, :ready_to_play))
+    game
+    |> Map.put(:current_question, Map.put(next_question, :state, :ready_to_play))
     |> Map.put(:remaining_questions, remaining_questions)
   end
 
