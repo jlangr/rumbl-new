@@ -17,4 +17,11 @@ defmodule Quizzy.Game do
   def start_question(game) do
     put_in(game.current_question.state, :playing)
   end
+
+  def answer_current_question(game, player, answer_index) do
+    case game.current_question.state do
+      :playing -> {:ok, "whatever"}
+      _ -> {:error, "not playing question"}
+    end
+  end
 end
