@@ -45,12 +45,29 @@ defmodule Quizzy.GameTest do
     game = new(quiz) |> add_two_players(context)
 
     game = next_question(game)
-    assert game.current_question == context.question1
+    assert game.current_question.text == context.question1.text
     game = next_question(game)
-    assert game.current_question == context.question2
+    assert game.current_question.text == context.question2.text
   end
 
+  test "question initially ready to play", context do
+    quiz = context.quiz |> add_two_questions(context)
+    game = new(quiz) |> add_two_players(context)
 
+    game = next_question(game)
+
+    assert game.current_question.state == :ready_to_play
+  end
+
+  test "question in play state on start", context do
+    quiz = context.quiz |> add_two_questions(context)
+    game = new(quiz) |> add_two_players(context)
+    game = next_question(game)
+
+    |> start_question()
+
+    assert game.current_question.state == :playing
+  end
   # is playable -- at least one question
   # and all questsions are playable
   # can start -- at least one player

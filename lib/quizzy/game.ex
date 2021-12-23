@@ -10,8 +10,11 @@ defmodule Quizzy.Game do
 
   def next_question(game) do
     [next_question | remaining_questions] = game.remaining_questions
-    game
-    |> Map.put(:current_question, next_question)
+    put_in(game.current_question, Map.put(next_question, :state, :ready_to_play))
     |> Map.put(:remaining_questions, remaining_questions)
+  end
+
+  def start_question(game) do
+    put_in(game.current_question.state, :playing)
   end
 end
